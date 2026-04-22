@@ -5,6 +5,14 @@ App Android para controle de pagamentos pessoais com metodos — Pix, Cartao de 
 
 ## Telas
 
+| Dashboard | Transacoes |
+|---|---|
+| ![Dashboard](img/PagoApp_Dashboard.png) | ![Transacoes](img/PagoApp_Transacoes.png) |
+
+| Nova Transacao | Relatorios |
+|---|---|
+| ![Nova Transacao](img/PagoApp_novo.png) | ![Relatorios](img/PagoApp_Relatorios.png) |
+
 | Tela | O que faz |
 |---|---|
 | **Dashboard** | Mostra saldo, receitas, despesas, gastos por tipo de pagamento e transacoes recentes |
@@ -42,3 +50,9 @@ app/src/main/java/com/diegowmenezes/pagoapp/
 - ~20 testes unitarios (ViewModels, repositories, use cases) com MockK + Turbine
 - ~10 testes instrumentados (queries Room) com banco in-memory
 
+## Decisoes Tecnicas
+
+- **Dinheiro como Long (centavos)** — Nunca Double, para evitar erros de ponto flutuante
+- **Datas como Long (epoch millis)** — Convertidas para LocalDateTime no domain
+- **Sealed interfaces para estado da UI** — `Loading / Success / Error` com `when` exaustivo
+- **Dynamic filter query** — Uma unica SQL que aceita qualquer combinacao de filtros
